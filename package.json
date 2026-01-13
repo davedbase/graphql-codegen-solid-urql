@@ -1,0 +1,41 @@
+{
+  "name": "@graphql-codegen/typescript-solid-urql",
+  "version": "1.0.0",
+  "description": "GraphQL Code Generator plugin for generating typed SolidJS URQL hooks",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc --watch",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "graphql",
+    "codegen",
+    "solidjs",
+    "urql",
+    "typescript",
+    "graphql-codegen-plugin"
+  ],
+  "author": "",
+  "license": "MIT",
+  "peerDependencies": {
+    "graphql": "^15.0.0 || ^16.0.0",
+    "@graphql-codegen/plugin-helpers": "^2.0.0 || ^3.0.0 || ^4.0.0 || ^5.0.0"
+  },
+  "dependencies": {
+    "@graphql-codegen/visitor-plugin-common": "^5.5.0",
+    "@graphql-codegen/typescript-operations": "^4.3.2",
+    "tslib": "^2.6.0"
+  },
+  "devDependencies": {
+    "@graphql-codegen/plugin-helpers": "^5.0.0",
+    "@types/node": "^20.11.0",
+    "graphql": "^16.8.1",
+    "typescript": "^5.3.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/graphql-codegen-solid-urql.git"
+  }
+}
