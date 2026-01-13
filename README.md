@@ -2,9 +2,9 @@
   <img width="100%" src="https://assets.solidjs.com/banner?type=GraphQL%20URQL%20Codegen&background=tiles&project=%20" alt="Solid Primitives">
 </p>
 
-# GraphQL Code Generator Plugin for SolidJS and URQL
+# GraphQL Code Generator Plugin for Solid and URQL
 
-A GraphQL Code Generator plugin that generates fully typed SolidJS primitives for URQL, including `createQuery`, `createMutation`, and `createSubscription`.
+A GraphQL Code Generator plugin that generates fully typed Solid primitives for URQL, including `createQuery`, `createMutation`, and `createSubscription`.
 
 ## Installation
 
@@ -264,7 +264,7 @@ query GetUsers {
 npm run codegen
 ```
 
-6. Set up your SolidJS app with URQL:
+6. Set up your Solid app with URQL:
 
 ```typescript
 import { render } from 'solid-js/web';
@@ -314,7 +314,7 @@ const UserList: Component = () => {
 
 - ✅ Fully typed queries, mutations, and subscriptions
 - ✅ TypeScript support
-- ✅ Generates SolidJS-specific hooks using `createQuery`, `createMutation`, `createSubscription`
+- ✅ Generates Solid-specific hooks using `createQuery`, `createMutation`, `createSubscription`
 - ✅ Proper handling of required vs optional variables
 - ✅ Compatible with solid-urql and @urql/core
 
@@ -323,7 +323,7 @@ const UserList: Component = () => {
 - [GraphQL Code Generator Documentation](https://the-guild.dev/graphql/codegen)
 - [solid-urql Documentation](https://github.com/urql-graphql/urql/tree/main/packages/solid-urql)
 - [URQL Documentation](https://formidable.com/open-source/urql/)
-- [SolidJS Documentation](https://www.solidjs.com/)
+- [Solid Documentation](https://www.solidjs.com/)
 
 ## License
 
