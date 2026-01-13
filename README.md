@@ -13,16 +13,10 @@ A GraphQL Code Generator plugin that generates fully typed SolidJS primitives fo
 npm install --save-dev @graphql-codegen/typescript-solid-urql
 npm install --save-dev @graphql-codegen/cli @graphql-codegen/typescript @graphql-codegen/typescript-operations
 npm install solid-urql @urql/core graphql
-```
-
-**pnpm:**
-```bash
+# or
 pnpm add -D @graphql-codegen/typescript-solid-urql @graphql-codegen/cli @graphql-codegen/typescript @graphql-codegen/typescript-operations
 pnpm add solid-urql @urql/core graphql
-```
-
-**yarn:**
-```bash
+# or
 yarn add -D @graphql-codegen/typescript-solid-urql @graphql-codegen/cli @graphql-codegen/typescript @graphql-codegen/typescript-operations
 yarn add solid-urql @urql/core graphql
 ```
@@ -292,8 +286,8 @@ render(
 
 7. Use the generated hooks in your components:
 
-```typescript
-import { Component, For } from 'solid-js';
+```tsx
+import { Component, For, Suspense } from 'solid-js';
 import { useCreateGetUsers } from './generated/graphql';
 
 const UserList: Component = () => {
@@ -301,15 +295,15 @@ const UserList: Component = () => {
 
   return (
     <div>
-      {result().fetching && <p>Loading...</p>}
-      {result().error && <p>Error: {result().error.message}</p>}
-      {result().data && (
-        <ul>
-          <For each={result().data.users}>
-            {(user) => <li>{user.name} - {user.email}</li>}
-          </For>
-        </ul>
-      )}
+      <Suspense>
+        <Show fallback={<p>Error: {result().error.message}</p>} when={!result().error }>
+          <ul>
+            <For each={result().data.users}>
+              {(user) => <li>{user.name} - {user.email}</li>}
+            </For>
+          </ul>
+        </Show>
+      </Suspense>
     </div>
   );
 };
