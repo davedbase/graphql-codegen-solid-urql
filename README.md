@@ -108,7 +108,7 @@ export const useCreateGetUser = (args: Omit<CreateQueryArgs<GetUserQueryVariable
 
 ### Using in Your SolidJS Component
 
-```typescript
+```tsx
 import { Component } from 'solid-js';
 import { useCreateGetUser } from './generated/graphql';
 
@@ -119,14 +119,15 @@ const UserProfile: Component<{ userId: string }> = (props) => {
 
   return (
     <div>
-      {result().fetching && <p>Loading...</p>}
-      {result().error && <p>Error: {result().error.message}</p>}
-      {result().data && (
-        <div>
-          <h1>{result().data.user.name}</h1>
-          <p>{result().data.user.email}</p>
-        </div>
-      )}
+    <Suspense>
+        <Show fallback={<p>Error: {result().error.message}</p>} when={!result().error }>
+          <ul>
+            <For each={result().data.users}>
+              {(user) => <li>{user.name} - {user.email}</li>}
+            </For>
+          </ul>
+        </Show>
+      </Suspense>
     </div>
   );
 };
