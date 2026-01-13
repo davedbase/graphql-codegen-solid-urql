@@ -6,6 +6,8 @@
 
 A GraphQL Code Generator plugin that generates fully typed Solid primitives for URQL, including `createQuery`, `createMutation`, and `createSubscription`.
 
+> **Note:** This plugin is for client-side SolidJS applications. If you're building a SolidStart application with SSR, use [`@graphql-codegen/typescript-solidstart-urql`](https://github.com/yourusername/graphql-codegen-solidstart-urql) instead. See the [comparison documentation](https://github.com/yourusername/graphql-codegen-solidstart-urql/blob/main/COMPARISON.md) for differences between the two plugins.
+
 ## Installation
 
 **npm:**
@@ -157,7 +159,7 @@ export const useCreateUpdateUser = () => {
 
 Using in your component:
 
-```typescript
+```tsx
 import { Component } from 'solid-js';
 import { useCreateUpdateUser } from './generated/graphql';
 
