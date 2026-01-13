@@ -1,18 +1,30 @@
+<p>
+  <img width="100%" src="https://assets.solidjs.com/banner?type=Solid + URQL Codegen&background=tiles&project=%20" alt="Solid Primitives">
+</p>
+
 # GraphQL Code Generator Plugin for SolidJS and URQL
 
-A GraphQL Code Generator plugin that generates fully typed SolidJS hooks for URQL, including `createQuery`, `createMutation`, and `createSubscription`.
+A GraphQL Code Generator plugin that generates fully typed SolidJS primitives for URQL, including `createQuery`, `createMutation`, and `createSubscription`.
 
 ## Installation
 
+**npm:**
 ```bash
 npm install --save-dev @graphql-codegen/typescript-solid-urql
-```
-
-You'll also need to install the required dependencies:
-
-```bash
 npm install --save-dev @graphql-codegen/cli @graphql-codegen/typescript @graphql-codegen/typescript-operations
 npm install solid-urql @urql/core graphql
+```
+
+**pnpm:**
+```bash
+pnpm add -D @graphql-codegen/typescript-solid-urql @graphql-codegen/cli @graphql-codegen/typescript @graphql-codegen/typescript-operations
+pnpm add solid-urql @urql/core graphql
+```
+
+**yarn:**
+```bash
+yarn add -D @graphql-codegen/typescript-solid-urql @graphql-codegen/cli @graphql-codegen/typescript @graphql-codegen/typescript-operations
+yarn add solid-urql @urql/core graphql
 ```
 
 ## Configuration
@@ -32,7 +44,7 @@ generates:
       - "typescript-operations"
       - "typescript-solid-urql"
     config:
-      withHooks: true
+      withPrimitives: true
       urqlImportFrom: "solid-urql"
 ```
 
@@ -53,7 +65,7 @@ const config: CodegenConfig = {
         'typescript-solid-urql'
       ],
       config: {
-        withHooks: true,
+        withPrimitives: true,
         urqlImportFrom: 'solid-urql'
       }
     }
@@ -67,8 +79,13 @@ export default config;
 
 | Option | Type | Default | Description |
 |--------|------|---------|-------------|
-| `withHooks` | `boolean` | `true` | Enable/disable generation of SolidJS hooks |
+| `withPrimitives` | `boolean` | `true` | Enable/disable generation of SolidJS primitives (wrappers around `createQuery`, `createMutation`, etc.) |
 | `urqlImportFrom` | `string` | `'solid-urql'` | The module to import `createQuery`, `createMutation`, etc. from |
+
+### `withPrimitives` Option
+
+- **`true` (default)**: Generates wrapper functions for each operation, providing a convenient API
+- **`false`**: Only generates TypeScript types and document strings, allowing you to use `createQuery`/`createMutation` directly
 
 ## Usage
 

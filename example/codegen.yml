@@ -8,5 +8,5 @@ generates:
       - "typescript-operations"
       - "./node_modules/@graphql-codegen/typescript-solid-urql/dist/index.js"
     config:
-      withHooks: true
+      withPrimitives: true
       urqlImportFrom: "solid-urql"

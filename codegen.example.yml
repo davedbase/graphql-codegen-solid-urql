@@ -8,5 +8,5 @@ generates:
       - "typescript-operations"
       - "typescript-solid-urql"
     config:
-      withHooks: true
+      withPrimitives: true
       urqlImportFrom: "solid-urql"

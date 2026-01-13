@@ -10,7 +10,7 @@ import { SolidUrqlPluginConfig } from "./config";
 
 export interface SolidUrqlPluginRawConfig
   extends RawClientSideBasePluginConfig {
-  withHooks?: boolean;
+  withPrimitives?: boolean;
   urqlImportFrom?: string;
 }
 
@@ -27,7 +27,7 @@ export class SolidUrqlVisitor extends ClientSideBaseVisitor<
     documents: any[],
   ) {
     super(schema, fragments, rawConfig, {
-      withHooks: rawConfig.withHooks !== false,
+      withPrimitives: rawConfig.withPrimitives !== false,
       urqlImportFrom: rawConfig.urqlImportFrom || "solid-urql",
       documentMode: DocumentMode.string,
     } as any);
@@ -41,7 +41,7 @@ export class SolidUrqlVisitor extends ClientSideBaseVisitor<
     const baseImports = super.getImports();
     const imports: string[] = [...baseImports];
 
-    if (this.config.withHooks) {
+    if (this.config.withPrimitives) {
       imports.push(
         `import { createQuery, createMutation, type CreateQueryArgs, type CreateMutationState } from '${this.config.urqlImportFrom}';`,
       );
@@ -68,7 +68,7 @@ export class SolidUrqlVisitor extends ClientSideBaseVisitor<
       useTypesSuffix: false,
     });
 
-    if (!this.config.withHooks) {
+    if (!this.config.withPrimitives) {
       return "";
     }
 
